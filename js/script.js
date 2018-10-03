@@ -19,7 +19,6 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 var quoteElement = document.getElementById("quote"),
 	sourceElement = document.getElementById("source"),
 	arr_placeholder = [], //this is a placeholder array that temporarily stores used quotes after they've been removed from the original array
-	citeElement = document.getElementById("citation"),
 	yearElement = document.getElementById("year"),
 	generatedNumber; //holds a random number that is generated when getRandomQuote() is called
 	
@@ -59,7 +58,7 @@ var quotes = [
 	},	
 	{
 		quote: "Never let your head hang down.  Never give up and sit down and grieve. Find another way!", 
-		citation: "Satchel Paige"
+		source: "Satchel Paige"
 	},	
 	{
 		quote: "You're never a loser, until you quit trying.",
@@ -104,10 +103,6 @@ function printQuote(){
 	quoteElement.textContent = generatedQuote.quote; 
 	sourceElement.textContent = generatedQuote.source;
 	
-	if(generatedQuote.hasOwnProperty("citation")){
-		citeElement.textContent = generatedQuote.citation;
-		sourceElement.innerHTML += "<span id=\"citation\" class=\"citation\"> " + "\"" + citeElement.textContent + "\"" +" </span>";
-	}
 	if(generatedQuote.hasOwnProperty("year")){
 		yearElement.textContent = generatedQuote.year;
 		sourceElement.innerHTML += "<span id=\"year\" class=\"year\"> " + yearElement.textContent +" </span>";
