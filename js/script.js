@@ -18,9 +18,7 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
 var quoteElement = document.getElementById("quote"),
 	sourceElement = document.getElementById("source"),
-	arr_placeholder = [], //this is a placeholder array that temporarily stores used quotes after they've been removed from the original array
-	yearElement = document.getElementById("year"),
-	generatedNumber; //holds a random number that is generated when getRandomQuote() is called
+	yearElement = document.getElementById("year");
 	
 var quotes = [
 
@@ -75,41 +73,21 @@ var quotes = [
 
 ];
 
-window.onload = function(event){
-	window.setInterval(printQuote, 10000);
-};
-
-
-
-
-
 /*====================== Function(s) Declaration(s) =====================*/
+function getRandomQuote() {
+	var generatedNumber = Math.floor(Math.random() * quotes.length); // stores random number
+	return quotes[generatedNumber];
+}
+
 function printQuote(){
 	/*
 	Will randomly generate a quote from the quotes array and will only repeat once after all other quotes have 
 	been repeated.
 	*/
-	var generatedQuote = function(){ 
-		/* 
-		Anonymous function that stores a random generated number and returns a quotes array with the generated random 
-		number as the index.
-		*/
-		generatedNumber = Math.floor(Math.random() * quotes.length); // stores random number
-		return quotes[generatedNumber];
-	}();
+	var randomQuote = getRandomQuote();
 
-	quotes.splice(generatedNumber, 1); // Removes current quote based on generated number/index in the array
-	arr_placeholder.push(generatedQuote); 
-	quoteElement.textContent = generatedQuote.quote; 
-	sourceElement.textContent = generatedQuote.source;
-	
-	if(generatedQuote.hasOwnProperty("year")){
-		yearElement.textContent = generatedQuote.year;
-		sourceElement.innerHTML += "<span id=\"year\" class=\"year\"> " + yearElement.textContent +" </span>";
-	}
-	if(quotes.length < 1){
-		quotes = arr_placeholder.splice(0);
-		arr_placeholder.splice(0, arr_placeholder.length);
-	}
+	quotes.splice(randomQuote, 1); // Removes current quote based on generated quote/index in the array
+	quoteElement.textContent = randomQuote.quote; 
+	sourceElement.textContent = randomQuote.source;
 }
 
