@@ -17,8 +17,7 @@
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 var quoteElement = document.getElementById("quote"),
-	sourceElement = document.getElementById("source"),
-	yearElement = document.getElementById("year");
+	sourceElement = document.getElementById("source");
 	
 var quotes = [
 
@@ -86,8 +85,9 @@ function printQuote(){
 	*/
 	var randomQuote = getRandomQuote();
 
-	quotes.splice(randomQuote, 1); // Removes current quote based on generated quote/index in the array
+	quotes.splice(randomQuote, 1)[0]; // Removes current quote based on generated quote/index in the array
 	quoteElement.textContent = randomQuote.quote; 
 	sourceElement.textContent = randomQuote.source;
+
 }
 
