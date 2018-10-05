@@ -85,9 +85,10 @@ function printQuote(){
 	*/
 	var randomQuote = getRandomQuote();
 
+
 	quotes.splice(randomQuote, 1)[0]; // Removes current quote based on generated quote/index in the array
-	quoteElement.textContent = randomQuote.quote; 
-	sourceElement.textContent = randomQuote.source;
+	document.getElementById("quote").innerHTML = randomQuote.quote;
+	document.getElementById("source").innerHTML = randomQuote.source;
 
 }
 
